@@ -18,6 +18,9 @@ public class Equipement
 
     [Required, StringLength(30)]
     public string Statut { get; set; } = "Disponible"; // Disponible, Assigne, Reparation
+    
+    public List<Affectation> Affectations { get; set; } = new();
+
 
     public DateTime? DateAchat { get; set; }
 }

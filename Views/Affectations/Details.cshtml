@@ -1,0 +1,60 @@
+@model GestionInterne.Models.Affectation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Affectation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Equipement)
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.Equipement?.Nom ?? $"Équipement #{Model.EquipementId}")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AssigneA)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AssigneA)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Departement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Departement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateDebut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateDebut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateFin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateFin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Statut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Statut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Commentaire)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Commentaire)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
