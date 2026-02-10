@@ -65,6 +65,7 @@ namespace GestionInterne.Controllers
         {
             if (ModelState.IsValid)
             {
+        
                 _context.Add(affectation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -104,6 +105,7 @@ namespace GestionInterne.Controllers
 
             if (ModelState.IsValid)
             {
+    
                 try
                 {
                     _context.Update(affectation);

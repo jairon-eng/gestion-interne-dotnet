@@ -34,12 +34,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DateDebut)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateFin)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateFin)
-        </dd>
+       <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.DateFin)
+</dt>
+<dd class="col-sm-10">
+    @(Model.DateFin.HasValue
+        ? Model.DateFin.Value.ToString("yyyy-MM-dd")
+        : "En attente de date de fin")
+</dd>
+
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Statut)
         </dt>

@@ -52,9 +52,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DateDebut)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateFin)
-            </td>
+           <td>
+    @(item.DateFin?.ToString("yyyy-MM-dd") ?? "En attente de date de fin")
+</td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Statut)
             </td>

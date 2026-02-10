@@ -45,9 +45,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Statut)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAchat)
-            </td>
+          <td>
+    @(item.DateAchat?.ToString("yyyy-MM-dd") ?? "À définir")
+</td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |

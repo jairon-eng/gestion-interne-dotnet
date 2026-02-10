@@ -25,7 +25,8 @@ Microsoft couramment utilisé en environnement industriel.
 - ASP.NET Core MVC (.NET 8)
 - C#
 - Entity Framework Core
-- SQL Server (Docker)
+- SQL Server
+- Docker (environnement de base de données)
 - Bootstrap (interface simple)
 - Git & GitHub
 

@@ -34,12 +34,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Statut)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateAchat)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateAchat)
-        </dd>
+       <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.DateAchat)
+</dt>
+<dd class="col-sm-10">
+    @(Model.DateAchat.HasValue
+        ? Model.DateAchat.Value.ToString("yyyy-MM-dd")
+        : "À définir")
+</dd>
+
     </dl>
 </div>
 <div>

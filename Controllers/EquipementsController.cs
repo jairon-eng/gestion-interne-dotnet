@@ -58,6 +58,7 @@ namespace GestionInterne.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(equipement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -95,6 +96,8 @@ namespace GestionInterne.Controllers
 
             if (ModelState.IsValid)
             {
+                if (equipement.DateAchat == null)
+
                 try
                 {
                     _context.Update(equipement);
