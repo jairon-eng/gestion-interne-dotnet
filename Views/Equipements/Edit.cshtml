@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Modifier</h1>
+<h1>Modifier L'équipement</h1>
 
-<h4>Equipement</h4>
+<h4>Équipement</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -35,19 +35,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="DateAchat" class="control-label"></label>
-               <input asp-for="DateAchat" class="form-control" type="date" />
+               
+                @Html.TextBoxFor(m => m.DateAchat, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
 
                 <span asp-validation-for="DateAchat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">retour a la liste</a>
+    <a asp-action="Index">Retour à la liste</a>
 </div>
 
 @section Scripts {

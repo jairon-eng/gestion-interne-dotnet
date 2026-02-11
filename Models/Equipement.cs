@@ -13,7 +13,7 @@ public class Equipement
     [Required, StringLength(40)]
     public string Type { get; set; } = string.Empty;
 
-    [Required, StringLength(80)]
+    [Required, StringLength(80), Display(Name = "Numéro de série")]
     public string NumSerie { get; set; } = string.Empty;
 
     [Required, StringLength(30)]
@@ -21,6 +21,8 @@ public class Equipement
     
     public List<Affectation> Affectations { get; set; } = new();
 
+    [Display(Name = "Date d’achat")]
+[DataType(DataType.Date)]
+public DateTime? DateAchat { get; set; }
 
-    public DateTime? DateAchat { get; set; }
 }

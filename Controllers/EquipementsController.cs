@@ -90,34 +90,26 @@ namespace GestionInterne.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Type,NumSerie,Statut,DateAchat")] Equipement equipement)
         {
             if (id != equipement.Id)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                if (equipement.DateAchat == null)
+            if (!ModelState.IsValid)
+                return View(equipement);
 
-                try
-                {
-                    _context.Update(equipement);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EquipementExists(equipement.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(equipement);
+            var existing = await _context.Equipements.FindAsync(id);
+            if (existing == null)
+                return NotFound();
+
+            // Actualiza campos uno por uno (robusto)
+            existing.Nom = equipement.Nom;
+            existing.Type = equipement.Type;
+            existing.NumSerie = equipement.NumSerie;
+            existing.Statut = equipement.Statut;
+            existing.DateAchat = equipement.DateAchat; // <-- aquí queda la fecha
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Equipements/Delete/5
         public async Task<IActionResult> Delete(int? id)
