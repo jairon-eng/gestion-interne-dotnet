@@ -19,6 +19,17 @@ namespace GestionInterne.Controllers
             _context = context;
         }
 
+        private void PopulateStatutDropDown(string? selected = null)
+        {
+            ViewData["Statut"] = new SelectList(new[]
+            {
+        "Disponible",
+        "Assigné",
+        "En réparation"
+    }, selected ?? "Disponible");
+        }
+
+
         // GET: Equipements
         public async Task<IActionResult> Index()
         {
@@ -46,8 +57,10 @@ namespace GestionInterne.Controllers
         // GET: Equipements/Create
         public IActionResult Create()
         {
+            PopulateStatutDropDown();
             return View();
         }
+
 
         // POST: Equipements/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -63,6 +76,7 @@ namespace GestionInterne.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateStatutDropDown(equipement.Statut);
             return View(equipement);
         }
 
@@ -79,6 +93,7 @@ namespace GestionInterne.Controllers
             {
                 return NotFound();
             }
+            PopulateStatutDropDown(equipement.Statut);
             return View(equipement);
         }
 
@@ -93,7 +108,10 @@ namespace GestionInterne.Controllers
                 return NotFound();
 
             if (!ModelState.IsValid)
+            {
+                PopulateStatutDropDown(equipement.Statut);
                 return View(equipement);
+            }
 
             var existing = await _context.Equipements.FindAsync(id);
             if (existing == null)
@@ -149,4 +167,5 @@ namespace GestionInterne.Controllers
             return _context.Equipements.Any(e => e.Id == id);
         }
     }
+
 }
