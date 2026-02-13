@@ -1,50 +1,142 @@
 # Gestion Interne – Application de gestion d’équipements TI
 
+🇫🇷 Français | 🇬🇧 [English](README.en.md) | 🇪🇸 [Español](README.es.md)
+
+![Québec](https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg)
+
+---
+
 ## Contexte
-Cette application simule une application interne utilisée dans une entreprise industrielle
+
+Cette application simule une application interne utilisée dans une entreprise industrielle québécoise
 pour la gestion des équipements TI et de leurs affectations aux employés ou aux départements.
 
-Elle est conçue dans un contexte réaliste d’entreprise, où les applications internes
-doivent être simples, fiables et faciles à maintenir.
+Le projet est conçu dans un contexte réaliste d’entreprise, où les applications internes doivent être :
 
-## Objectif
-L’objectif du projet est de démontrer la conception et le développement d’une application
-web interne claire et maintenable, basée sur des processus réels de gestion des équipements TI.
+- Simples  
+- Fiables  
+- Maintenables  
+- Cohérentes avec les processus métier  
 
-Le projet met l’accent sur la structure, la cohérence métier et l’utilisation d’un stack
-Microsoft couramment utilisé en environnement industriel.
+L’objectif n’est pas de créer une interface complexe, mais une application claire et professionnelle.
+
+---
+
+## Objectif du projet
+
+Démontrer la conception et le développement d’une application web interne basée sur :
+
+- Une architecture MVC propre
+- Une base de données relationnelle
+- Une gestion cohérente des statuts et des affectations
+- Un environnement reproductible avec Docker
+- Une séparation claire des responsabilités
+
+Ce projet reflète une approche pragmatique orientée vers les besoins réels d’une entreprise industrielle.
+
+---
 
 ## Fonctionnalités
-- Gestion des équipements TI (création, modification, consultation, suppression)
-- Gestion des affectations d’équipements avec historique
-- Relation entre équipements et affectations
-- Interface utilisateur en français
-- Architecture MVC claire et structurée
+
+### Gestion des équipements
+- Création, modification, consultation et suppression (CRUD)
+- Gestion du statut via un catalogue (Disponible, Assigné, En réparation)
+- Date d’achat optionnelle :
+  - Affichage « À définir » si non renseignée
+  - Validation empêchant une date future
+
+### Gestion des affectations
+- Création, modification, consultation et suppression (CRUD)
+- Relation avec les équipements (clé étrangère)
+- Statut via catalogue (Actif, Terminé, En attente)
+- Date de fin optionnelle :
+  - Affichage « En attente de date de fin » si non renseignée
+
+### Interface
+- Interface complète en français
+- Navigation cohérente
+- Pages Accueil et Confidentialité adaptées au contexte interne
+
+---
 
 ## Stack technique
+
 - ASP.NET Core MVC (.NET 8)
 - C#
 - Entity Framework Core
 - SQL Server
-- Docker (environnement de base de données)
-- Bootstrap (interface simple)
+- Docker (base de données en local)
+- Azure Data Studio (visualisation et gestion de la base)
+- Bootstrap (interface simple issue du template MVC)
 - Git & GitHub
 
+---
+
 ## Architecture
-- Application web basée sur le pattern MVC
+
+- Pattern MVC (Models, Views, Controllers)
+- Injection de dépendances native ASP.NET Core
 - Base de données relationnelle
-- Séparation claire des responsabilités (Models, Views, Controllers)
-- Utilisation de l’injection de dépendances native d’ASP.NET Core
-- Méthodes asynchrones (async/await) pour l’accès aux données
+- Chargement explicite des relations via `Include`
+- Validation métier via Data Annotations
 
-## Pertinence pour une entreprise industrielle
-Ce projet est conçu pour refléter un contexte réaliste d’entreprise industrielle,
-où les applications internes privilégient la clarté, la stabilité et la maintenabilité
-plutôt que la complexité inutile ou l’esthétique avancée.
+L’application privilégie la lisibilité du code et la maintenabilité.
 
-Il illustre un type d’application interne typique utilisée par un service TI
-pour la gestion et le suivi des équipements.
+---
+
+## Démarrage local
+
+### Prérequis
+
+- .NET 8 SDK
+- Docker Desktop
+
+### 1. Démarrer SQL Server (Docker)
+
+Lancer votre conteneur SQL Server.
+
+### 2. Vérifier la chaîne de connexion
+
+Dans `appsettings.json` :
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost,1433;Database=GestionInterneDb;User Id=sa;Password=StrongPassw0rd123;TrustServerCertificate=True;"
+}
+```
+### 3. Appliquer les migrations
+
+Exécuter :
+
+dotnet ef database update
+
+### 4. Lancer l’application
+
+Exécuter :
+
+dotnet run
+
+---
+
+## Portée du projet
+
+Ce projet est volontairement simple afin de :
+
+- Refléter une application interne réaliste
+- Mettre l’accent sur la structure et la cohérence
+- Éviter la complexité inutile
+
+Il peut être étendu avec :
+
+- Authentification
+- Gestion des rôles
+- API REST
+- Journalisation avancée
+- Déploiement cloud
+
+---
 
 ## Auteur
-Formation universitaire complétée en ingénierie des systèmes (Guatemala),  
 
+Formation universitaire complétée en ingénierie des systèmes (Guatemala).  
+Projet développé dans un contexte d’intégration au marché TI québécois.
