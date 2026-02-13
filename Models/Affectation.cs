@@ -31,7 +31,7 @@ namespace GestionInterne.Models
 
         [Required, StringLength(30)]
         [Display(Name = "Statut")]
-        public string Statut { get; set; } = "Active";
+        public string Statut { get; set; } = "Actif";
 
         [StringLength(250)]
         [Display(Name = "Commentaire")]

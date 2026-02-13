@@ -19,6 +19,18 @@ namespace GestionInterne.Controllers
             _context = context;
         }
 
+        private void PopulateStatutDropDown(string? selected = null)
+{
+    ViewData["Statut"] = new SelectList(new[]
+    {
+        "Actif",
+        "Terminé",
+        "En attente"
+    }, selected ?? "Actif");
+}
+
+
+
         // GET: Affectations
        public async Task<IActionResult> Index()
 {
@@ -53,6 +65,7 @@ namespace GestionInterne.Controllers
         public IActionResult Create()
         {
             ViewData["EquipementId"] = new SelectList(_context.Equipements, "Id", "Nom");
+            PopulateStatutDropDown();
             return View();
         }
 
@@ -71,6 +84,7 @@ namespace GestionInterne.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EquipementId"] = new SelectList(_context.Equipements, "Id", "Nom", affectation.EquipementId);
+            PopulateStatutDropDown(affectation.Statut);
             return View(affectation);
         }
 
@@ -88,6 +102,7 @@ namespace GestionInterne.Controllers
                 return NotFound();
             }
             ViewData["EquipementId"] = new SelectList(_context.Equipements, "Id", "Nom", affectation.EquipementId);
+            PopulateStatutDropDown(affectation.Statut);
             return View(affectation);
         }
 
