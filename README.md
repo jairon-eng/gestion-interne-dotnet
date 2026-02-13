@@ -2,7 +2,10 @@
 
 🇫🇷 Français | 🇬🇧 [English](README.en.md) | 🇪🇸 [Español](README.es.md)
 
-![Québec](https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" width="120">
+</p>
+
 
 ---
 
